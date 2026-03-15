@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ironclad IT — Managed IT Services for Growing Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #fafafa;
+      --white: #ffffff;
+      --ink: #0f172a;
+      --slate: #475569;
+      --muted: #94a3b8;
+      --border: #e2e8f0;
+      --blue: #1e40af;
+      --blue-light: #3b82f6;
+      --blue-bg: #eff6ff;
+      --blue-glow: rgba(30,64,175,0.08);
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --orange: #ea580c;
+      --orange-bg: #fff7ed;
+      --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --display: 'Fraunces', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 48px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-shield {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text span { color: var(--blue); }
+
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: white !important;
+      padding: 10px 22px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-light) !important; }
+
+    .nav-phone {
+      font-weight: 600 !important;
+      color: var(--ink) !important;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 140px 48px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-content { max-width: 540px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--green-bg);
+      border: 1px solid rgba(22,163,74,0.15);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(38px, 4.5vw, 52px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero > .hero-content > p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--slate);
+      margin-bottom: 32px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .hero-trust {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .trust-item {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-check {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.06);
+    }
+
+    .dashboard-mock {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mock-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .mock-status {
+      display: flex;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .status-green { background: var(--green); }
+    .status-green-dim { background: rgba(22,163,74,0.3); }
+
+    .mock-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(226,232,240,0.5);
+      font-size: 13px;
+    }
+
+    .mock-row-label { color: var(--slate); font-weight: 500; }
+    .mock-row-value { font-weight: 600; }
+    .mock-row-value.green { color: var(--green); }
+    .mock-row-value.blue { color: var(--blue); }
+    .mock-row-value.orange { color: var(--orange); }
+
+    /* ─── SERVICES ─── */
+    .services {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-family: var(--display);
+      font-size: clamp(30px, 3vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 36px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 30px var(--blue-glow);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .service-icon.blue { background: var(--blue-bg); }
+    .service-icon.red { background: var(--red-bg); }
+    .service-icon.green { background: var(--green-bg); }
+    .service-icon.orange { background: var(--orange-bg); }
+
+    .service-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.65;
+    }
+
+    .service-includes {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .service-tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: var(--bg);
+      border-radius: 6px;
+      color: var(--slate);
+    }
+
+    /* ─── WHY US ─── */
+    .why-section {
+      padding: 100px 48px;
+      background: var(--ink);
+      color: white;
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .why-section .section-label { color: var(--blue-light); }
+    .why-section .section-header p { color: #94a3b8; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      padding: 32px 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+    }
+
+    .why-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--blue-light);
+      margin-bottom: 12px;
+    }
+
+    .why-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.65;
+    }
+
+    /* ─── PROOF ─── */
+    .proof-section {
+      padding: 100px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .proof-card {
+      padding: 36px 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .proof-card blockquote {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .proof-author { font-size: 14px; font-weight: 700; }
+    .proof-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      padding: 100px 48px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--blue-bg) 100%);
+    }
+
+    .cta-section h2 {
+      font-family: var(--display);
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-phone {
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--slate);
+    }
+
+    .cta-phone a {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 56px 48px 36px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 8px;
+      max-width: 280px;
+    }
+
+    .footer-links { display: flex; gap: 48px; }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--ink); }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-bottom a { color: var(--muted); text-decoration: none; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content { animation: fadeUp 0.7s ease-out; }
+    .hero-visual { animation: fadeUp 0.8s ease-out 0.15s both; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 12px 20px; }
+      .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .services, .why-section, .proof-section, .cta-section { padding: 72px 24px; }
+      .footer-top { flex-direction: column; gap: 36px; }
+      .footer-links { flex-wrap: wrap; gap: 28px; }
+      .hero-trust { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-shield">IC</div>
+      <div class="logo-text">Ironclad<span>IT</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#clients">Clients</a>
+      <a href="tel:9024555100" class="nav-phone">902-455-5100</a>
+      <a href="#cta" class="nav-cta">Get a Free Assessment</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">All systems operational — 99.97% uptime this quarter</div>
+      <h1>IT that works so well you <em>forget it's there</em></h1>
+      <p>Ironclad IT manages your entire technology stack — helpdesk, security, cloud, and infrastructure — so your team can focus on their actual jobs instead of fighting with printers and phishing emails.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Get a Free IT Assessment</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-check">✓</span> 15-minute response SLA</div>
+        <div class="trust-item"><span class="trust-check">✓</span> 24/7 monitoring</div>
+        <div class="trust-item"><span class="trust-check">✓</span> No long-term contracts</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="dashboard-mock">
+        <div class="mock-header">
+          <div class="mock-title">System Health — All Clients</div>
+          <div class="mock-status">
+            <div class="status-dot status-green"></div>
+            <div class="status-dot status-green"></div>
+            <div class="status-dot status-green"></div>
+            <div class="status-dot status-green-dim"></div>
+          </div>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Endpoints Protected</span>
+          <span class="mock-row-value blue">847</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Threats Blocked (30d)</span>
+          <span class="mock-row-value green">12,403</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Avg Ticket Resolution</span>
+          <span class="mock-row-value">42 min</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Open Tickets</span>
+          <span class="mock-row-value orange">3</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Uptime (90d)</span>
+          <span class="mock-row-value green">99.97%</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Next Scheduled Maintenance</span>
+          <span class="mock-row-value">Mar 22, 2:00 AM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <div class="section-label">What we manage</div>
+      <h2>Everything between the wall jack and the cloud</h2>
+      <p>We handle the full stack of business technology so you don't have to hire, manage, or worry about any of it. Fixed monthly cost. No surprises.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon blue">🎧</div>
+        <h3>Helpdesk & Day-to-Day Support</h3>
+        <p>Your team calls us instead of bugging the one person in the office who "knows computers." We handle password resets, email issues, printer nightmares, new employee setups, and the hundred small things that eat your day.</p>
+        <div class="service-includes">
+          <span class="service-tag">15-min SLA</span>
+          <span class="service-tag">Phone + Chat</span>
+          <span class="service-tag">Remote + Onsite</span>
+          <span class="service-tag">New Hire Setup</span>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-icon red">🛡️</div>
+        <h3>Cybersecurity & Threat Protection</h3>
+        <p>Ransomware, phishing, credential theft — we defend against all of it. Managed endpoint protection, email filtering, security awareness training, and 24/7 threat monitoring so you're not the next headline.</p>
+        <div class="service-includes">
+          <span class="service-tag">24/7 Monitoring</span>
+          <span class="service-tag">EDR/XDR</span>
+          <span class="service-tag">Phishing Training</span>
+          <span class="service-tag">Incident Response</span>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-icon green">☁️</div>
+        <h3>Cloud Management & Migration</h3>
+        <p>Microsoft 365, Azure, AWS, Google Workspace — we set it up right, keep it running, and make sure you're not paying for licenses nobody uses. If you're still running a server in a closet, we'll fix that too.</p>
+        <div class="service-includes">
+          <span class="service-tag">M365 Admin</span>
+          <span class="service-tag">Azure / AWS</span>
+          <span class="service-tag">Backup & Recovery</span>
+          <span class="service-tag">License Optimization</span>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-icon orange">🔧</div>
+        <h3>Infrastructure & Network</h3>
+        <p>Firewalls, switches, Wi-Fi, VPNs, and the physical stuff that keeps your office connected. We design, deploy, and monitor your network so slow internet and dropped VPN calls stop being a daily occurrence.</p>
+        <div class="service-includes">
+          <span class="service-tag">Network Design</span>
+          <span class="service-tag">Firewall Mgmt</span>
+          <span class="service-tag">Wi-Fi</span>
+          <span class="service-tag">VPN</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section" id="why">
+    <div class="why-inner">
+      <div class="section-header">
+        <div class="section-label">Why Ironclad</div>
+        <h2>We're not the cheapest. We're the ones you stop thinking about.</h2>
+        <p>The best IT provider is the one you never have to call — because they already fixed it before you noticed.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-number">42m</div>
+          <h3>Average ticket resolution</h3>
+          <p>Not "we'll get back to you." Not "have you tried restarting?" We pick up in under 15 minutes and most issues are closed within the hour.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">0</div>
+          <h3>Successful ransomware attacks on our watch</h3>
+          <p>In six years of operation, zero clients have suffered a successful ransomware incident. Our layered security approach means threats get stopped before they reach your data.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">94%</div>
+          <h3>Client retention rate</h3>
+          <p>Our clients stay because their technology just works. No lock-in contracts, no hostage-taking. We keep you because we earn it every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="proof-section" id="clients">
+    <div class="section-header">
+      <div class="section-label">Our clients</div>
+      <h2>Trusted by 80+ businesses across Atlantic Canada</h2>
+      <p>Law firms, accounting practices, construction companies, medical clinics, and nonprofits — we handle IT for organizations that can't afford downtime.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <blockquote>"We used to have a part-time IT guy who was never available when things broke. Ironclad responds in minutes. Our staff actually likes calling the helpdesk now — that's a first."</blockquote>
+        <div class="proof-author">Linda Chen</div>
+        <div class="proof-role">Office Manager, Baxter & Associates Law (34 employees)</div>
+      </div>
+      <div class="proof-card">
+        <blockquote>"After a competitor got hit with ransomware and was down for three weeks, we called Ironclad the next day. They audited our entire setup, found eight critical gaps, and had us locked down within a week."</blockquote>
+        <div class="proof-author">Mark Devereaux</div>
+        <div class="proof-role">CEO, Atlantic Mechanical Contractors (92 employees)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <h2>Stop losing productive hours to <em>technology problems</em></h2>
+    <p>Book a free 30-minute IT assessment. We'll audit your current setup, identify risks, and show you exactly what proactive IT management looks like — with zero obligation and zero sales pressure.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary">Book Free Assessment</a>
+      <a href="#" class="btn-outline">Download IT Checklist</a>
+    </div>
+    <div class="cta-phone">
+      Or call us directly: <a href="tel:9024555100">902-455-5100</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-foundry-protect>
+    <div class="footer-top">
+      <div>
+        <a href="#" class="logo">
+          <div class="logo-shield">IC</div>
+          <div class="logo-text">Ironclad<span>IT</span></div>
+        </a>
+        <div class="footer-tagline">Managed IT services for growing businesses across Atlantic Canada. Halifax-based, remotely everywhere.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Helpdesk</a>
+          <a href="#">Cybersecurity</a>
+          <a href="#">Cloud Management</a>
+          <a href="#">Infrastructure</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">IT Assessment</a>
+          <a href="#">Security Checklist</a>
+          <a href="#">Pricing</a>
+          <a href="#">SLA Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ironclad IT Solutions Ltd. Halifax, Nova Scotia.</span>
+      <div>
+        <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
